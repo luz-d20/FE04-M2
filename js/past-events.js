@@ -15,7 +15,7 @@ for(let event of data.events){
             </p>
             <p><strong>Location:</strong> ${event.place}</p>
             <p><strong>Capacity:</strong> ${event.capacity}</p>
-            <p><strong>Assistance (estimated):</strong> ${event.estimate}</p>
+            <p><strong>Assistance:</strong> ${event.assistance}</p>
             <p>Price: ${event.price}</p>
             <a href="#" class="btn btn-primary">Read More</a>
         </div>

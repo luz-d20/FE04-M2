@@ -1,6 +1,7 @@
 let eventsContainer = document.querySelector(".events-container");
 let htmlEvents = "";
 for(let event of data.events){
+  event.estimate ? event.estimate : event.estimate = event.assistance;
   eventsContainer.innerHTML += `<div class="card" style="width: 18rem;">
   <img src="${event.image}" class="card-img-top" alt="${event.description}">
   <div class="card-body">
@@ -11,8 +12,8 @@ for(let event of data.events){
       </p>
       <p><strong>Location:</strong> ${event.place}</p>
       <p><strong>Capacity:</strong> ${event.capacity}</p>
-      <p><strong>Assistance (estimated):</strong> ${event.estimate}</p>
-      <p>Price: ${event.price}</p>
+      <p><strong>Assistance:</strong> ${event.estimate}</p>
+      <p>Price: $${event.price}</p>
       <a href="#" class="btn btn-primary">Read More</a>
   </div>
   </div>`;
