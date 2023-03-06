@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Checkboxes:
+        Extract the categories dynamically from the event data file
+        Delete repeated ones to get a single value for each
+        With the resulting array, create the checkboxes.
+
+        Filters:
+        define conditionals evaluating if the input has a value or if the checkboxes are checked.
+    -->    
+    <div>
+        <div class="filters">
+            <div class="checkbox" id="checkboxContainer"></div>
+    </div>
+    <div class="events-container"></div>
+    <script type="text/javascript" src="../js/data.js"></script>
+    <script>
+        //Capture categories and discard duplicates
+        let eventCategories = [];
+        for (event of data.events) {
+            eventCategories.push(event.category);
+        }
+        let uniqueCategories = [...new Set(eventCategories)]
+        console.log(eventCategories)
+        console.log(uniqueCategories)
+
+        //Render checkboxes based on unique categories
+        const checkboxContainer = document.getElementById('checkboxContainer');
+
+// Crear checkboxes para cada categoría
+uniqueCategories.forEach(category => {
+  // Crear un elemento de input checkbox
+  const option = document.createElement('input');
+  option.type = 'checkbox';
+  option.id = category;
+  option.name = category;
+  option.value = category;
+
+  // Crear un elemento de etiqueta para la categoría
+  const label = document.createElement('label');
+  label.htmlFor = category;
+  label.appendChild(document.createTextNode(category));
+
+  // Agregar el checkbox y la etiqueta al elemento "checkboxContainer" del DOM
+  checkboxContainer.appendChild(option);
+  checkboxContainer.appendChild(label);
+});
+        //Capture chosen filters to "checked" variable
+        let checkboxes = document.querySelectorAll('input[type=checkbox]');
+let checked = [];
+
+for (let checkbox of checkboxes) {
+  checkbox.addEventListener("click", (event) => {
+    if (event.target.checked) {
+      checked.push(event.target.value);
+    } else {
+      // Remove unchecked checkboxes from the array
+      let index = checked.indexOf(event.target.value);
+      if (index !== -1) {
+        checked.splice(index, 1);
+      }
+    }
+    console.log(checked);
+  });
+}   
+        
+    </script>
+</body>
+</html>

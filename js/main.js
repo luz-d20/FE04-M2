@@ -1,5 +1,6 @@
 let eventsContainer = document.querySelector(".events-container");
 let htmlEvents = "";
+function populateCards () {
 for(let event of data.events){
   event.estimate ? event.estimate : event.estimate = event.assistance;
   eventsContainer.innerHTML += `<div class="card" style="width: 18rem;">
@@ -17,6 +18,6 @@ for(let event of data.events){
       <a href="#" class="btn btn-primary">Read More</a>
   </div>
   </div>`;
-}
+}}
 
-
+document.addEventListener('DOMContentLoaded', populateCards());
