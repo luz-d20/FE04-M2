@@ -34,14 +34,8 @@ header, .hero, footer {
     padding: 40px 0;
     gap: 30px;
 }
-.checkbox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 .checkbox label {
-    margin: 5px 15px;
+    margin: 5px 15px 5px 5px;
 }
 .search {
     display: flex;

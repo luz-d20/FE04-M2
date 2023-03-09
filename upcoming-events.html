@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazing Events | Details</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <title>Amazing Events | Upcoming Events</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="../assets/Logo_Amazing_Events.png" alt="Amazing Events" width="100">
+                    <img src="./assets/Logo_Amazing_Events.png" alt="Amazing Events" width="100">
                 </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,10 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Home</a>
+                    <a class="nav-link" href="./index.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="./upcoming-events.html">Upcoming Events</a>
+                    <a class="nav-link active" aria-current="page" href="#">Upcoming Events</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="./past-events.html">Past Events</a>
@@ -44,21 +44,22 @@
           </nav>
     </header>
     <main>
-        <div class="container">
-            <div class="detail-card mt-5">
-                <img src="../assets/Marathon.jpg" alt="People running a marathon" class="img-fluid">
-                <div class="card-description">
-                    <h1>Chesterfield Half Marathon</h1>
-                    <p><small class="text-muted">20/Mar, 10am<br><span class="event-category">Outdoors</span></small></p>
-                    <p class="card-text">
-                      Join this half marathon and help raise money for charity. The route will take you through the beautiful countryside of Derbyshire, with stunning views of the Peak District. The route is flat and fast, with a few small hills to keep you on your toes. The route is fully marshalled and there will be water stations along the way. The event is chip timed and you will receive a medal and goody bag at the finish line.
-                    </p>
-                    <p><strong>Location:</strong> Starting at Highfield Park, Chesterfield, UK</p>
-                    <p><strong>Capacity:</strong> Unlimited</p>
-                    <p><strong>Assistance (estimated):</strong> 8000</p>
-                    <p>Price: Free</p>
-                </div>
-            </div>                
+      <section class="container-fluid hero">
+        <a href="./stats.html"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg></a>
+        <h1>Upcoming Events</h1>
+        <a href="./upcoming-events.html"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg></a>
+    </section>
+    <div class="main-cards container">
+      <div class="filters">
+          <div class="checkbox" id="futureContainer">
+          </div>
+          <div class="search d-flex">
+            <input class="div-control me-2" id="searchbar" type="text" placeholder="Type...">
+            <button class="btn btn-outline-success" id="search" onclick="search(filteredEvents)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"/></svg></button>
+          </div>
+      </div>
+      <div class="cards events-container">
+      </div>
         </div>
     </main>
     <footer>
@@ -70,14 +71,11 @@
         <h3>FE04-TN</h3>
     </footer>
 
-    <!--
-        Incorporar:
-            - Navbar responsive y funcional
-            - Favicon
-            - Logo
-            - Cards con menos info en Home / Upcoming / Past porque el detalle va en Details
+    <script src="./js/data.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/searchfilters.js"></script>
+    <script src="./js/future-events.js"></script>
 
-    -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
