@@ -45,22 +45,24 @@
     </header>
     <main>
       <section class="container-fluid hero">
-        <a href="./stats.html"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg></a>
+        <a href="./index.html"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg></a>
         <h1>Upcoming Events</h1>
-        <a href="./upcoming-events.html"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg></a>
+        <a href="./past-events.html"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg></a>
     </section>
     <div class="main-cards container">
       <div class="filters">
-          <div class="checkbox" id="futureContainer">
+          <div class="checkbox" id="checkboxContainer">
           </div>
           <div class="search d-flex">
             <input class="div-control me-2" id="searchbar" type="text" placeholder="Type...">
-            <button class="btn btn-outline-success" id="search" onclick="search(filteredEvents)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"/></svg></button>
           </div>
       </div>
-      <div class="cards events-container">
+      <div class="cards events-container" id="events-container">
       </div>
-        </div>
+      <div class='container failedSearch' style='display:none'>
+        <p>There are no events with that name. Try again!</p>
+      </div>
+  </div>
     </main>
     <footer>
         <div class="social">
@@ -73,7 +75,6 @@
 
     <script src="./js/data.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/searchfilters.js"></script>
     <script src="./js/future-events.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

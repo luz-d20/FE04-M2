@@ -201,6 +201,7 @@ footer {
     }
     .card {
         margin: 0;
+        padding: 15px;
     }
     .detail-card {
         max-width: 80%;
