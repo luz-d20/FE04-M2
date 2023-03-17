@@ -1,9 +1,10 @@
+//Array de categorías individuales
 let eventCategories = [];
 for (e of data.events) {
     eventCategories.push(e.category);
 }
 eventCategories = [...new Set(eventCategories)];
-//Render checkboxes based on the array of categories
+//Renderizo las checkboxes en base al array de categorías
 function createCheckboxes(containerName) {
   const checkboxesContainer = document.getElementById(containerName);
   checkboxesContainer.innerHTML = eventCategories.map(category => `
@@ -13,7 +14,7 @@ function createCheckboxes(containerName) {
     </label>
   `).join('');
 }
-//Creates all cards from an array of objects given as parameter
+//Creo las cards en base al array de eventos dado como parámetro
 function createCards(cards) {
   const cardsContainer = document.getElementById("events-container");
   cardsContainer.innerHTML = cards.map(card => `<div class="card" data-category="${card.category}" style="width: 18rem;">
@@ -31,14 +32,18 @@ function createCards(cards) {
     </div>`
     ).join('');
 }
-//Filters the existing cards via checkboxes and search bar
+//Filtro las cards existentes por checkboxes y search bar
 function filterCards() {
+  //Defino lista de todas los checkbox y recupero los seleccionados: si está checkeado, recupero el value
   const checkboxes = document.querySelectorAll("#checkboxContainer input[type=checkbox]");
   const selectedCategories = [...checkboxes].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+  //Defino elemento search bar y recupero valor - saco espacios, pongo en minúscula
   const searchBar = document.getElementById("searchbar");
   const searchValue = searchBar.value.trim().toLowerCase();
+  //Genero array de las cards que ya existen y variable en caso de falta de resultados de búsqueda
   const cards = document.querySelectorAll("#events-container .card");
   let hasResults = false;
+  //Recorro array de cards y filtro por categorías y valor de búsqueda
   [...cards].forEach(card => {
     const cardCategory = card.getAttribute("data-category").toLowerCase();
     const cardTitle = card.querySelector("h5").textContent.toLowerCase();
@@ -51,6 +56,7 @@ function filterCards() {
       card.style.display = "none";
     }
   });
+  //Muestro mensaje de falta de resultados
   const failedSearch = document.querySelector('.failedSearch');
   if (!hasResults) {
     failedSearch.style.display = 'block';
@@ -58,6 +64,6 @@ function filterCards() {
     failedSearch.style.display = 'none';
   }
 }
-//Add event listener to search bar
+//Agrego event listener a la barra de búsqueda
 const searchBar = document.getElementById("searchbar");
 searchBar.addEventListener("input", filterCards);

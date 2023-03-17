@@ -1,10 +1,10 @@
-//Get ID information from the URL
+//Recupero información de ID de la URL
 const queryString = location.search
 const params = new URLSearchParams(queryString)
 const id = params.get("id")
 const detailsCard = document.querySelector(".detail-card")
 
-//Filter through events with the ID & render
+//Filtro los eventos con el ID y renderizo el resultado
 const selectedEvent = data.events.find(e => id == e._id);
 selectedEvent.estimate ? selectedEvent.estimate : selectedEvent.estimate = selectedEvent.assistance;
 detailsCard.innerHTML = `
