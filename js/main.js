@@ -1,9 +1,29 @@
-//Array de categorías individuales
+//Variables para poblar con la información de la API
+const url = "https://mindhub-xj03.onrender.com/api/amazing";
+let data = {};
 let eventCategories = [];
-for (e of data.events) {
-    eventCategories.push(e.category);
+let filteredPastEvents = [];
+let filteredFutureEvents = [];
+
+//Función para obtener los datos de la API
+async function getEvents() {
+    try {
+        let response = await fetch(url);
+        let datosAPI = await response.json();
+        data = datosAPI;
+        //Array de categorías individuales
+        for (e of data.events) {
+          eventCategories.push(e.category);
+        }
+        eventCategories = [...new Set(eventCategories)];
+        filteredPastEvents = data.events.filter(event => new Date(event.date) < new Date(data.currentDate));
+        filteredFutureEvents = data.events.filter(event => new Date(event.date) > new Date(data.currentDate));
+    }
+    catch (error) {
+        console.log(error);
+    }
+    console.log(data)
 }
-eventCategories = [...new Set(eventCategories)];
 //Renderizo las checkboxes en base al array de categorías
 function createCheckboxes(containerName) {
   const checkboxesContainer = document.getElementById(containerName);
@@ -26,7 +46,7 @@ function createCards(cards) {
         </p>
         <p><strong>Location:</strong> ${card.place}</p>
         <p><strong>Capacity:</strong> ${card.capacity}</p>
-        <p><strong>Assistance:</strong> ${card.estimate || card.assistance}</p>
+        <p><strong>Assistance:</strong> ${(card.estimate ? card.estimate + " (estimated)" : "") || card.assistance}</p>
         <p>Price: $${card.price}</p>
         <a href="details.html?id=${card._id}" class="btn btn-dark">Read More</a>
     </div>`
@@ -65,5 +85,7 @@ function filterCards() {
   }
 }
 //Agrego event listener a la barra de búsqueda
-const searchBar = document.getElementById("searchbar");
-searchBar.addEventListener("input", filterCards);
+function handleSearchBar() {
+  const searchBar = document.getElementById("searchbar");
+  searchBar.addEventListener("input", filterCards);
+}

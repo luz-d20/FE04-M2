@@ -1,4 +1,9 @@
-//Renderizo checkboxes + Filtro eventos con fechas futuras y los renderizo con la función declarada en Main.js
-let filteredEvents = data.events.filter(event => new Date(event.date) > new Date(data.currentDate));
-createCheckboxes("checkboxContainer");
-createCards(filteredEvents);
+async function populateIndex() {
+    //Espero que llegue la info de la API
+    await getEvents();
+    //Renderizo todos los eventos y checkboxes con la función declarada en Main.js
+    createCheckboxes("checkboxContainer");
+    createCards(filteredFutureEvents);
+}
+handleSearchBar()
+document.addEventListener("DOMContentLoaded", populateIndex);
